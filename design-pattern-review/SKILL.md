@@ -86,7 +86,13 @@ Before reviewing, gather context:
 
 Use the template in `report-template.md` to produce a structured markdown report.
 
-Output the report inline (do not write to a file unless the user asks to save it).
+Save the report to `./docs/review/YYYY-MM-DD-<project-name>-pattern-review.md` where:
+- `YYYY-MM-DD` is today's date
+- `<project-name>` is the project or repository name derived from the root directory name or `package.json`/`go.mod`/`Cargo.toml`
+
+Example: `./docs/review/2026-04-17-my-service-pattern-review.md`
+
+Create the `docs/review/` directory if it does not exist. Also output the report inline so the user can read it immediately without opening the file.
 
 ## Edge Cases
 
