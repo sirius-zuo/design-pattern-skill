@@ -9,16 +9,19 @@ Covers 35+ patterns across GoF Creational, Structural, Behavioral, Modern (Repos
 
 ## Installation
 
-### Prerequisites
-
-- [Claude Code](https://claude.ai/code) installed and configured
-
-### Install the skill
+The skill is built as a Claude Code native skill, but the pattern knowledge files can be wired into any AI coding agent that supports custom instructions or context files. Clone the repo first, then follow the instructions for your agent.
 
 ```bash
-# Clone the repo
 git clone git@github.com:olivezuo/design-pattern-skill.git
+```
 
+---
+
+### Claude Code
+
+**Prerequisites:** [Claude Code](https://claude.ai/code) installed and configured.
+
+```bash
 # Copy the skill to your Claude Code skills directory
 cp -r design-pattern-skill/design-pattern-review ~/.claude/skills/design-pattern-review
 
@@ -34,7 +37,122 @@ cat > ~/.claude/skills/design-pattern-review/.skill-meta.json << 'EOF'
 EOF
 ```
 
-The skill is immediately available in any Claude Code session — no restart required.
+The skill is immediately active. Invoke it with `/design-pattern-review`.
+
+---
+
+### Cursor
+
+Add a rule file that instructs Cursor to use the pattern knowledge when reviewing architecture.
+
+Create `.cursor/rules/design-pattern-review.mdc` in your project root:
+
+```markdown
+---
+description: Review architecture and code for design pattern opportunities
+globs:
+alwaysApply: false
+---
+
+When asked to review architecture or suggest design patterns, follow the process in:
+<path-to-cloned-repo>/design-pattern-skill/design-pattern-review/SKILL.md
+
+Use the pattern knowledge from:
+- <path-to-cloned-repo>/design-pattern-skill/design-pattern-review/patterns/creational.md
+- <path-to-cloned-repo>/design-pattern-skill/design-pattern-review/patterns/structural.md
+- <path-to-cloned-repo>/design-pattern-skill/design-pattern-review/patterns/behavioral.md
+- <path-to-cloned-repo>/design-pattern-skill/design-pattern-review/patterns/modern.md
+- <path-to-cloned-repo>/design-pattern-skill/design-pattern-review/patterns/architectural.md
+
+Output the report using the template in:
+<path-to-cloned-repo>/design-pattern-skill/design-pattern-review/report-template.md
+```
+
+Replace `<path-to-cloned-repo>` with the absolute path where you cloned this repo.
+
+Then trigger it in Cursor chat: `@design-pattern-review.mdc Review this codebase for design pattern opportunities.`
+
+---
+
+### GitHub Copilot
+
+Add instructions to `.github/copilot-instructions.md` in your project root (create it if it doesn't exist):
+
+```markdown
+## Design Pattern Review
+
+When asked to review architecture or suggest design patterns, read and follow the instructions at:
+<path-to-cloned-repo>/design-pattern-skill/design-pattern-review/SKILL.md
+
+Reference the pattern knowledge files in:
+<path-to-cloned-repo>/design-pattern-skill/design-pattern-review/patterns/
+
+Output findings using the report template at:
+<path-to-cloned-repo>/design-pattern-skill/design-pattern-review/report-template.md
+```
+
+Then ask Copilot in chat: `Review this project for design pattern opportunities following the design-pattern-review instructions.`
+
+---
+
+### Windsurf
+
+Create `.windsurfrules` in your project root (or append to it if it exists):
+
+```markdown
+## Design Pattern Review
+
+When asked to review architecture or suggest design patterns, follow the process defined in:
+<path-to-cloned-repo>/design-pattern-skill/design-pattern-review/SKILL.md
+
+Use the pattern reference files in:
+<path-to-cloned-repo>/design-pattern-skill/design-pattern-review/patterns/
+
+Format output using:
+<path-to-cloned-repo>/design-pattern-skill/design-pattern-review/report-template.md
+```
+
+Then ask in Cascade chat: `Review this codebase for design pattern opportunities.`
+
+---
+
+### OpenAI Codex CLI
+
+Add instructions to `AGENTS.md` in your project root (create it if it doesn't exist):
+
+```markdown
+## Design Pattern Review
+
+When asked to review architecture or suggest design patterns, read and follow:
+<path-to-cloned-repo>/design-pattern-skill/design-pattern-review/SKILL.md
+
+Reference the pattern files in:
+<path-to-cloned-repo>/design-pattern-skill/design-pattern-review/patterns/
+
+Format the output report using:
+<path-to-cloned-repo>/design-pattern-skill/design-pattern-review/report-template.md
+```
+
+Then run: `codex "Review this project for design pattern opportunities"`
+
+---
+
+### Aider
+
+Pass the skill files as context when starting an aider session:
+
+```bash
+aider \
+  --read <path-to-cloned-repo>/design-pattern-skill/design-pattern-review/SKILL.md \
+  --read <path-to-cloned-repo>/design-pattern-skill/design-pattern-review/patterns/creational.md \
+  --read <path-to-cloned-repo>/design-pattern-skill/design-pattern-review/patterns/structural.md \
+  --read <path-to-cloned-repo>/design-pattern-skill/design-pattern-review/patterns/behavioral.md \
+  --read <path-to-cloned-repo>/design-pattern-skill/design-pattern-review/patterns/modern.md \
+  --read <path-to-cloned-repo>/design-pattern-skill/design-pattern-review/patterns/architectural.md \
+  --read <path-to-cloned-repo>/design-pattern-skill/design-pattern-review/report-template.md
+```
+
+Then in the aider session: `/ask Review this codebase for design pattern opportunities following the SKILL.md instructions.`
 
 ## Usage
 
