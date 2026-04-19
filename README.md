@@ -229,9 +229,6 @@ design-pattern-review/
     modern.md             # Modern pattern detection rules
     architectural.md      # Architectural pattern detection rules
   report-template.md      # Report output template
-docs/
-  superpowers/specs/
-    2026-04-17-design-pattern-review-skill-design.md  # Design spec
 ```
 
 ## Scope
