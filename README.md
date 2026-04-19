@@ -12,7 +12,7 @@ Covers 35+ patterns across GoF Creational, Structural, Behavioral, Modern (Repos
 The skill is built as a Claude Code native skill, but the pattern knowledge files can be wired into any AI coding agent that supports custom instructions or context files. Clone the repo first, then follow the instructions for your agent.
 
 ```bash
-git clone git@github.com:olivezuo/design-pattern-skill.git
+git clone git@github.com:sirius-zuo/design-pattern-skill.git
 ```
 
 ---
