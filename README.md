@@ -1,7 +1,6 @@
 <p align="center">
-  <img src="assets/Design-Pattern-Skill-Banner.jpg" alt="Design-Pattern-Skill" width="1280">
+  <img src="assets/Design-Pattern-Skill-banner.jpg" alt="Design-Pattern-Skill" width="1280">
 </p>
-
 
 
 # Design-Pattern-SKILL
