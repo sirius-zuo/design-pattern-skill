@@ -1,4 +1,10 @@
-# design-pattern-review
+<p align="center">
+  <img src="assets/Design-Pattern-Skill-Banner.jpg" alt="Design-Pattern-Skill" width="1280">
+</p>
+
+
+
+# Design-Pattern-SKILL
 
 A Claude Code skill that reviews your project's architecture for design pattern applicability. It works in two modes:
 
