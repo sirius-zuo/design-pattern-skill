@@ -73,3 +73,46 @@ _If none: "No anti-patterns observed."_
 - **Anti-patterns observed:** [J]
 
 > [Optional 2-3 sentence overall assessment of the architecture's pattern maturity and the most impactful next step.]
+
+---
+
+## Machine-Parsable Summary
+
+```json
+{
+  "review_date": "YYYY-MM-DD",
+  "mode": "[design_doc | code]",
+  "languages": ["[lang1]", "[lang2]"],
+  "scope": "[full | <path>]",
+  "patterns_in_use": [
+    {
+      "pattern": "[name]",
+      "category": "[creational|structural|behavioral|modern|architectural]",
+      "location": "[file or module]",
+      "assessment": "[well_implemented|misapplied|partially_applied]"
+    }
+  ],
+  "recommendations": [
+    {
+      "opportunity": "[description]",
+      "pattern": "[name]",
+      "location": "[file or module]",
+      "impact": "[high|medium|low]",
+      "priority": "[high|medium|low]"
+    }
+  ],
+  "anti_patterns": [
+    {
+      "anti_pattern": "[name]",
+      "location": "[file or module]",
+      "issue": "[description]"
+    }
+  ],
+  "counts": {
+    "patterns_in_use": [N],
+    "opportunities": [M],
+    "high_priority": [K],
+    "anti_patterns": [J]
+  }
+}
+```
